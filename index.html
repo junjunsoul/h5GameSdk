@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="Content-Security-Policy" content="data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *">
+        
+        <meta name="format-detection" content="telephone=no, email=no" />
+        <!-- 启用360浏览器的极速模式(webkit) -->
+        <meta name="renderer" content="webkit">
+        <!-- 删除默认的苹果工具栏和菜单栏 -->
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <!-- 避免IE使用兼容模式 -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+        <meta name="HandheldFriendly" content="true">
+        <!-- 微软的老式浏览器 -->
+        <meta name="MobileOptimized" content="320">
+        <!-- UC强制全屏 -->
+        <meta name="full-screen" content="yes">
+        <!-- QQ强制全屏 -->
+        <meta name="x5-fullscreen" content="true">
+        <!-- UC应用模式 -->
+        <meta name="browsermode" content="application">
+        <!-- QQ应用模式 -->
+        <meta name="x5-page-mode" content="app">
+        <!-- windows phone 点击无高光 -->
+        <meta name="msapplication-tap-highlight" content="no">
+        <!-- 美图游戏盒平台标识  默认无 -->
+        <meta id="meitu-gamebox-platform" name="meitu-gamebox-platform" content="none">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        
+        <link rel="stylesheet" type="text/css" href="css/index.css?v3.0">
+        <title>九娱游戏</title>
+        <script>
+
+            window.domain='http://api.h5.wh9yu.com/'
+            window.wx_api='http://test.h5.wh9yu.com/'
+            var v=window.localStorage.getItem('version')
+            var curV=2.0
+            if(v){
+                if(v!=curV){
+                    window.localStorage.removeItem('info')
+                    window.localStorage.removeItem('imei')
+                    window.localStorage.setItem('version',curV)
+                    document.cookie ="token="
+                }
+            }else{
+                window.localStorage.setItem('version',curV)
+            }
+            document.body.addEventListener('touchmove' , function(e){
+                e.preventDefault();
+            })
+        </script>
+    </head>
+    <body>
+        <div id="game_login" onclick="native_Sdk.login()" 
+        style=" display: none;
+                position: absolute;
+                bottom: 5%;
+                left: 50%;
+                margin-left: -125px;
+                width: 250px;
+                height: 190px;
+                z-index: 100;">
+            <img src="img/login.png"  style="width: 250px;height: 190px">
+        </div>
+        <div id="h5wrap" style="display: none;">
+            <div class="main-btn"></div>
+            <div class="user-bg">
+                <div class="user-pop">
+                    <div class="top">
+                        <div class="logo"><img src="img/logo.png"></div>
+                        <div class="userinfo"><span class="username"></span></div>
+                        <div class="btn_click">
+                            <span>
+                                <div class="item" id="revamp">修改密码</div>
+                                <div class="item" id="bound">绑定账号</div>
+                                <div class="item" id="switch">切换账号</div>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="manu">
+                        <div class="item kf active"><dd></dd><span>联系客服</span></div>
+                        <div class="item lb"><dd></dd><span>游戏礼包</span></div>
+                        <div class="item gd"><dd></dd><span>更多游戏</span></div>
+                        <div class="item gg"><dd></dd><span>公众号</span></div>
+                    </div>
+                    <div class="center">
+                        <div class="item kf active">
+                            <h3>九娱游戏客服中心</h3>
+                            <p>24小时客服QQ/电话</p>
+                            <p style="color:#ff7800">800060650</p>
+                        </div>
+                        <div class="item lb">
+                            <h3>敬请期待</h3>
+                        </div>
+                        <div class="item gd">
+                            <h3>敬请期待</h3>
+                        </div>
+                        <div class="item gg">
+                            <h3>关注微信公众号：<span style="color:#ff7800">game9yu</span></h3>
+                            <p>防止丢失带来不便</p>
+                            <p><img src="img/wxewm.jpg"></p>
+                            <p>游戏最新福利资讯：<span style="color:#ff7800">game9yu</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="login-bg">
+                <div class="login-pop">
+                    <span class="close"></span>
+                    <div class="top">
+                        <span><img src="img/pop_logo.png"><h3>九娱网络</h3></span>
+                    </div>
+                    <div class="center">
+                        <div class="user-item">
+                           <i class="u"></i> <input type="text" id="username" placeholder="账号：6-20字母组合" value="">
+                        </div>
+                        <div class="user-item">
+                           <i class="p"></i> <input type="password" id="password" placeholder="密码：6-20字母组合" value="">
+                        </div>
+                    </div>
+                    <p class="error"></p> 
+                    <div class="btns bottom" id="dl-btn">
+                        <button id="regbtn">注册</button>                
+                        <button id="loginbtn">立即登录</button>
+                    </div>
+                    <div class="bottom" id="bd-btn">
+                        <button id="re_log_btn">绑定账号</button>
+                    </div>
+                    <div class="hint" id="hint">提示：切换账号会丢失游客账号信息哦！</div>
+                </div>
+            </div>
+            <div class="revamp-bg">
+                <div class="login-pop">
+                    <span class="close"></span>
+                    <div class="top">
+                        <span><img src="img/pop_logo.png"><h3>九娱网络</h3></span>
+                    </div>
+                    <div class="center">
+                        <div class="user-item">
+                           <i class="p"></i> <input type="password" id="rpassword" placeholder="旧密码：6-20字母组合" value="">
+                        </div>
+                        <div class="user-item">
+                           <i class="p"></i> <input type="password" id="repassword" placeholder="新密码：6-20字母组合" value="">
+                        </div>
+                    </div>
+                    <p class="error"></p> 
+                    <div class="bottom">
+                        <button id="rebtn">修改密码</button>
+                    </div>
+                </div>
+            </div>
+            <div class="register-bg">
+                <div class="login-pop">
+                    <span class="close"></span>
+                    <div class="top">
+                        <span><img src="img/pop_logo.png"><h3>九娱网络</h3></span>
+                    </div>
+                    <div class="center">
+                        <div class="user-item">
+                           <i class="u"></i> <input type="text" id="reg_username" placeholder="账号：6-20字母组合" value="">
+                        </div>
+                        <div class="user-item">
+                           <i class="p"></i> <input type="password" id="reg_password" placeholder="密码：6-20字母组合" value="">
+                        </div>
+                        <div class="user-item">
+                           <i class="p"></i> <input type="password" id="reg_repassword" placeholder="重复密码：6-20字母组合" value="">
+                        </div>
+                    </div>
+                   <p class="error"></p> 
+                    <div class="bottom">
+                        <button id="registerbtn">注册账号</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="close_bg">
+            <div class="pop">
+                <div class="title">退出</div>
+                <div class="content">是否退出传奇来了？</div>
+                <div class="botton">
+                    <span>取消</span>
+                    <span>确认</span>
+                </div>
+            </div>
+        </div>
+        <iframe src="" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto" id="gameUrl"></iframe>
+        
+        <script src="js/util.js?v=1.0"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.event.drag-2.2.js"></script>
+        <script src="js/md5.js?v=1.0"></script>
+        <script src="http://h5.wh9yu.com/js/adv.sdk.js?v=1.0"></script>
+        <script src="js/pay.js?v=1.0"></script>        
+        <script>
+            var fromStatus=false
+            var common=null
+            var isTouch=false
+            $(".main-btn").drag("start", function() {
+                isTouch=true
+            }).drag(function(ev, dd) {
+                if (isTouch) {
+                    $(this).css({
+                        top: limit_height(dd.offsetY),
+                        left: limit_width(dd.offsetX)
+                    })
+                }
+            }).drag("end",function(){
+                isTouch=false
+            })
+
+            //游戏调用页面方法入口
+            function callFunc(model,fun,data){
+                //只有H5 SDK调用
+                if(!window.callJS||queryString('platform')=='h5'){
+                    var user=app.getLocalStorage('info')
+                    common.setUserInfo(device.gameid,user.userid)
+                }
+                window[model][fun](data,function(msg){});
+            }
+            //H5操作DOM方法
+            $(document).ready(function(){
+                setInterval(function(){
+                    if(!isTouch){
+                        $('.main-btn').css('right','-30px')
+                        $('.main-btn').css('left','auto')
+                    }
+                },4000)
+
+                common=new eyugame_play(domain+'api.php?m=api&c=Pay&a=getPayList',1)
+
+                $('.main-btn').click(function(e){
+                    if($(this).hasClass('active')){
+                        $(this).removeClass('active')
+                    }else{
+                        $(this).addClass('active')
+                        $('.user-bg').addClass('active')
+                    } 
+                })
+                $('#regbtn').click(function(e){
+                    $('.login-bg').hide()
+                    $('.register-bg').show()
+                })
+                $('.user-bg').click(function(e){
+                    $(this).removeClass('active')
+                    $('.main-btn').removeClass('active')
+                })
+
+                $('.user-pop').click(function(e){
+                    e.stopPropagation();
+                    return false
+                })
+
+                $('.user-pop .manu .item').click(function(e){
+                    $(this).addClass('active').siblings('.item').removeClass('active')
+                    $('.user-pop .center .item.'+$(this).attr('class').split(' ')[1]).addClass('active').siblings('.item').removeClass('active')
+                })
+
+                $('.login-pop .close').click(function(){
+                    $('.login-bg').hide()
+                })
+                $('.revamp-bg .close').click(function(){
+                    $('.revamp-bg').hide()
+                })
+                $('.register-bg .close').click(function(){
+                    $('.register-bg').hide()
+                })
+
+                $('#bound').click(function(){//绑定
+                    $('.login-bg').show()
+                    $('#dl-btn').hide()
+                    $('#bd-btn').show()
+                    $('#hint').hide()
+                    $('.login-bg input').val('')
+                    $('.login-bg .error').html('')
+                    fromStatus=false
+                })
+                $('#switch').click(function(){//切换
+                    $('.login-bg').show()
+                    $('#dl-btn').show()
+                    var local_s=app.getLocalStorage('info')
+                    if(local_s.username==device.imei){
+                        $('#hint').show()
+                        setTimeout(function(){
+                            $('#hint').hide()
+                        },4000)
+                    }else{
+                        $('#dl-btn').removeClass('btns')
+                        $('#regbtn').hide()
+                    }
+                    $('#bd-btn').hide()
+                    $('.login-bg input').val('')
+                    $('.login-bg .error').html('')
+                    fromStatus=true
+                })
+
+                $('#revamp').click(function(){//修改密码
+                    $('.revamp-bg input').val('')
+                    $('.revamp-bg .error').html('')
+                    $('.revamp-bg').show()
+                })               
+                $('#rebtn').click(function(){
+                    var password=$('#repassword').val()
+                    var oldpassword=$("#rpassword").val()
+                    app.rpassword(password,oldpassword,function(info){
+                        if(info){
+                            $('.revamp-bg .error').html(info)
+                        }else{
+                            $('.revamp-bg .error').html('')
+                            $('.revamp-bg').hide()
+                            $('.user-bg').hide()
+                        }
+                    })
+                })
+                $('#registerbtn').click(function(){
+                    var username=$('#reg_username').val()
+                    var password=$('#reg_password').val()
+                    var repassword=$("#reg_repassword").val()
+                    if(!username){
+                        $('.register-bg .error').html('账号不为空！')
+                        return
+                    }
+                    if(password&&repassword&&password==repassword){
+                        app.boundAc(username,password,function(info){
+                            if(info){
+                                $('.register-bg .error').html(info)
+                            }else{
+                                $('.register-bg .error').html('')
+                                $('.register-bg').hide()
+                                $('.user-bg').hide()
+                                $('#revamp').show()
+                                $('#bound').hide()
+                            }
+                        })
+                    }else{
+                        $('.register-bg .error').html('密码不一致！')
+                        return
+                    }
+                })
+                $('#re_log_btn').click(function(){//登录
+                    var username=$('#username').val()
+                    var password=$("#password").val()
+                    app.boundAc(username,password,function(info){
+                        if(info){
+                            $('.login-bg .error').html(info)
+                        }else{
+                            $('.login-bg .error').html('')
+                            $('.login-bg').hide()
+                            $('#revamp').show()
+                            $('#bound').hide()
+                            $('.user-bg').hide()
+                        }
+                    })
+                })
+                $('#loginbtn').click(function(){//登录
+                    var username=$('#username').val()
+                    var password=$("#password").val()
+                    app.login(username,password,function(info){
+                        if(info){
+                            $('.login-bg .error').html(info)
+                        }else{
+                            $('.login-bg .error').html('')
+                            $('.login-bg').hide()
+                            $('#revamp').show()
+                            $('#bound').hide()
+                            $('.user-bg').hide()
+                        }
+                    })
+                })
+
+                $('.close_bg .botton span:first-child').click(function(){
+                    $('.close_bg').hide()
+                })
+                $('.close_bg .botton span:nth-child(2)').click(function(){
+                    navigator.app.exitApp()
+                })
+            })
+        </script>
+    </body>
+    <script>
+            window.platform='andorid'//默认安卓
+            var p=queryString('platform')
+            var script_name='cordova'
+            if(p=='ios'|| p=='h5'){//ios
+                script_name='cordova_ios'
+                window.platform='ios'
+            }
+            //根据平台加载cordova框架
+            var el= document.createElement('script')
+                el.src=script_name+'.js?v=3.0'
+            var el1=document.createElement('script')
+                el1.src='js/index.js?v='+Math.random()
+            var body=document.getElementsByTagName('body')[0]
+                body.appendChild(el)
+
+            setTimeout(function(){
+                body.appendChild(el1)
+            },500)
+    </script>
+</html>

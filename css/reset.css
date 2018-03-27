@@ -1,0 +1,181 @@
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu {
+    margin: 0;
+    padding: 0
+}
+
+html,body,fieldset,img,iframe,abbr {
+    border: 0
+}
+
+li {
+    list-style: none
+}
+
+textarea {
+    overflow: auto;
+    resize: none
+}
+
+a,button {
+    cursor: pointer
+}
+
+h1,h2,h3,h4,h5,h6,em,strong,b {
+    font-weight: 700
+}
+
+a,a:hover {
+    text-decoration: none
+}
+
+body,html {
+    width: 100%;
+    font-weight: 400;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: center
+}
+
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    font-family: "Microsoft YaHei","Helvetica Neue",Arial,HelveticaNeue,Helvetica,"BBAlpha Sans",sans-serif
+}
+
+body {
+    background: #f2f2f2;
+    opacity: 1;
+    -webkit-transition: opacity 500ms ease-in;
+    transition: opacity 500ms ease-in
+}
+
+a {
+    text-decoration: none
+}
+
+input {
+    -webkit-appearance: none
+}
+
+* {
+    outline: 0;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-focus-ring-color: rgba(0,0,0,0)
+}
+
+p,a,li,span,input {
+    font-size: .28rem
+}
+
+h1 {
+    font-size: .32rem
+}
+
+h2 {
+    font-size: .34rem
+}
+
+h3 {
+    font-size: .3rem
+}
+
+h4 {
+    font-weight: 400;
+    font-size: .3rem
+}
+
+h5 {
+    font-size: .28rem
+}
+
+textarea {
+    font-size: 24px
+}
+
+a {
+    color: #434343
+}
+
+html {
+    font-size: 312.5%
+}
+
+@media screen and (max-width: 359px) and (orientation:portrait) {
+    html {
+        font-size:266.67%
+    }
+}
+
+@media screen and (min-width: 360px) and (max-width:374px) and (orientation:portrait) {
+    html {
+        font-size:300%
+    }
+}
+
+@media screen and (min-width: 384px) and (max-width:399px) and (orientation:portrait) {
+    html {
+        font-size:320%
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width:413px) and (orientation:portrait) {
+    html {
+        font-size:333.33%
+    }
+}
+
+@media screen and (min-width: 414px) and (max-width:431px) and (orientation:portrait) {
+    html {
+        font-size:345%
+    }
+}
+
+@media screen and (min-width: 432px) and (max-width:479px) and (orientation:portrait) {
+    html {
+        font-size:360%
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width:639px) and (orientation:portrait) {
+    html {
+        font-size:400%
+    }
+}
+
+@media screen and (min-width: 640px) and (orientation:portrait) {
+    html {
+        font-size:533.33%
+    }
+}
+
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0
+}
+
+.clearfix {
+    clear: both;
+    zoom:1
+}
+
+.hide {
+    display: none
+}
+
+.clr:after {
+    clear: both;
+    visibility: hidden;
+    content: '.';
+    height: 0;
+    display: block
+}
+
+.clr {
+    clear: both;
+    *zoom:1
+}
